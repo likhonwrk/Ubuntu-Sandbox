@@ -1,0 +1,92 @@
+# Sandbox Configuration
+name: "Ubuntu Development Sandbox"
+version: "1.0.0"
+description: "A containerized Ubuntu environment for development and experimentation"
+
+# Environment settings
+environment:
+  os: "ubuntu:22.04"
+  shell: "/bin/bash"
+  user: "sandbox"
+  home: "/home/sandbox"
+
+# Resource limits (adjust based on HuggingFace Space limits)
+resources:
+  cpu: "2"
+  memory: "4Gi"
+  storage: "10Gi"
+
+# Network configuration
+network:
+  ports:
+    - name: "web-server"
+      port: 8000
+      description: "Main web application port"
+    - name: "jupyter"
+      port: 8888
+      description: "Jupyter Lab interface"
+    - name: "dev-server"
+      port: 3000
+      description: "Development server port"
+
+# Pre-installed tools and packages
+software:
+  system_packages:
+    - curl
+    - wget
+    - git
+    - vim
+    - nano
+    - htop
+    - tree
+    - unzip
+    - build-essential
+  
+  python_packages:
+    - jupyterlab
+    - fastapi
+    - uvicorn
+    - requests
+    - pandas
+    - numpy
+    - matplotlib
+    - seaborn
+  
+  node_packages:
+    - express
+    - nodemon
+    - pm2
+
+# Security settings
+security:
+  run_as_root: false
+  sudo_access: true
+  network_isolation: false
+  readonly_filesystem: false
+
+# Startup scripts and services
+startup:
+  scripts:
+    - "/home/sandbox/init.sh"
+  services:
+    - name: "jupyter"
+      command: "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+      auto_start: false
+    - name: "web-server"
+      command: "python3 -m http.server 8000"
+      auto_start: false
+
+# Volume mounts for persistent data
+volumes:
+  - name: "projects"
+    path: "/home/sandbox/projects"
+    description: "User projects and code"
+  - name: "tools"
+    path: "/home/sandbox/tools"
+    description: "Custom tools and utilities"
+
+# Environment variables
+env_vars:
+  PYTHONPATH: "/home/sandbox/projects:/home/sandbox/tools"
+  NODE_ENV: "development"
+  JUPYTER_ENABLE_LAB: "yes"
