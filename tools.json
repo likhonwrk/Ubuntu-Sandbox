@@ -1,0 +1,160 @@
+{
+  "tools": {
+    "development": {
+      "code_editors": [
+        {
+          "name": "vim",
+          "command": "vim",
+          "description": "Terminal-based text editor",
+          "config_path": "/home/sandbox/.vimrc"
+        },
+        {
+          "name": "nano",
+          "command": "nano",
+          "description": "Simple terminal text editor",
+          "config_path": "/home/sandbox/.nanorc"
+        }
+      ],
+      "version_control": [
+        {
+          "name": "git",
+          "command": "git",
+          "description": "Distributed version control system",
+          "config_path": "/home/sandbox/.gitconfig"
+        }
+      ],
+      "package_managers": [
+        {
+          "name": "pip",
+          "command": "pip3",
+          "description": "Python package installer",
+          "config_path": "/home/sandbox/.pip/pip.conf"
+        },
+        {
+          "name": "npm",
+          "command": "npm",
+          "description": "Node.js package manager",
+          "config_path": "/home/sandbox/.npmrc"
+        }
+      ]
+    },
+    "system": {
+      "monitoring": [
+        {
+          "name": "htop",
+          "command": "htop",
+          "description": "Interactive process viewer",
+          "usage": "Monitor system resources and processes"
+        },
+        {
+          "name": "tree",
+          "command": "tree",
+          "description": "Directory tree display",
+          "usage": "tree [directory] - Display directory structure"
+        }
+      ],
+      "networking": [
+        {
+          "name": "curl",
+          "command": "curl",
+          "description": "Command line HTTP client",
+          "usage": "curl [options] [URL] - Make HTTP requests"
+        },
+        {
+          "name": "wget",
+          "command": "wget",
+          "description": "File downloader",
+          "usage": "wget [URL] - Download files from web"
+        }
+      ]
+    },
+    "runtime_environments": {
+      "python": {
+        "version": "3.10+",
+        "interpreter": "/usr/bin/python3",
+        "package_manager": "pip3",
+        "virtual_env_tool": "venv",
+        "common_packages": [
+          "requests",
+          "pandas",
+          "numpy",
+          "matplotlib",
+          "jupyterlab",
+          "fastapi",
+          "uvicorn"
+        ]
+      },
+      "nodejs": {
+        "version": "18+",
+        "interpreter": "/usr/bin/node",
+        "package_manager": "npm",
+        "runtime": "node",
+        "common_packages": [
+          "express",
+          "nodemon",
+          "pm2",
+          "axios",
+          "lodash"
+        ]
+      }
+    },
+    "web_servers": {
+      "python_http": {
+        "command": "python3 -m http.server",
+        "port": 8000,
+        "description": "Simple HTTP server for static files"
+      },
+      "fastapi": {
+        "command": "uvicorn main:app --host 0.0.0.0 --port 8000",
+        "port": 8000,
+        "description": "FastAPI development server"
+      },
+      "jupyter": {
+        "command": "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root",
+        "port": 8888,
+        "description": "Jupyter Lab notebook server"
+      }
+    },
+    "custom_scripts": {
+      "init": {
+        "path": "/home/sandbox/init.sh",
+        "description": "Sandbox initialization script",
+        "executable": true
+      },
+      "start_jupyter": {
+        "path": "/home/sandbox/start_jupyter.sh",
+        "description": "Start Jupyter Lab server",
+        "executable": true
+      },
+      "project_setup": {
+        "path": "/home/sandbox/project_setup.sh",
+        "description": "Setup new project directory",
+        "executable": true
+      }
+    }
+  },
+  "shortcuts": {
+    "ll": "ls -la",
+    "la": "ls -A",
+    "l": "ls -CF",
+    "..": "cd ..",
+    "...": "cd ../..",
+    "grep": "grep --color=auto",
+    "fgrep": "fgrep --color=auto",
+    "egrep": "egrep --color=auto"
+  },
+  "environment_variables": {
+    "EDITOR": "vim",
+    "BROWSER": "echo",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1",
+    "NODE_ENV": "development"
+  },
+  "startup_commands": [
+    "echo 'Welcome to Ubuntu Sandbox!'",
+    "echo 'Available tools: $(ls /usr/bin | wc -l) system commands'",
+    "echo 'Python version: $(python3 --version)'",
+    "echo 'Node.js version: $(node --version)'",
+    "cd /home/sandbox/projects"
+  ]
+}
