@@ -205,6 +205,13 @@ async def home():
             .btn-warning:hover {
                 background: #d68910;
             }
+            .btn-info {
+                background: #17a2b8;
+                color: white;
+            }
+            .btn-info:hover {
+                background: #138496;
+            }
             .terminal-section {
                 margin-top: 30px;
                 background: #2c3e50;
@@ -289,8 +296,8 @@ async def home():
                 <div class="card">
                     <h3>📁 Project Structure</h3>
                     <ul>
-                        <li>/home/sandbox/projects <span class="status-badge status-running">Ready</span></li>
-                        <li>/home/sandbox/tools <span class="status-badge status-running">Ready</span></li>
+                        <li>/app/projects <span class="status-badge status-running">Ready</span></li>
+                        <li>/app/tools <span class="status-badge status-running">Ready</span></li>
                         <li>Sample projects <span class="status-badge status-running">Created</span></li>
                     </ul>
                 </div>
@@ -306,6 +313,9 @@ async def home():
                         </li>
                         <li>
                             <button class="btn btn-warning" onclick="runNodeServer()">Run Node.js Server</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-info" onclick="runDataAnalysis()">Run Data Analysis</button>
                         </li>
                     </ul>
                 </div>
@@ -383,7 +393,7 @@ Type 'help' for available commands.
             }
 
             function listProjects() {
-                runSpecificCommand('ls -la /home/sandbox/projects/');
+                runSpecificCommand('ls -la /app/projects/');
             }
 
             function checkPorts() {
@@ -405,12 +415,17 @@ Type 'help' for available commands.
 
             function runSampleApp() {
                 appendOutput('$ Starting sample Python app...');
-                runSpecificCommand('cd /home/sandbox/projects/sample-project && python3 app.py &');
+                runSpecificCommand('cd /app/projects/sample-project && python3 app.py &');
             }
 
             function runNodeServer() {
                 appendOutput('$ Starting Node.js server...');
-                runSpecificCommand('cd /home/sandbox/projects/sample-project && node server.js &');
+                runSpecificCommand('cd /app/projects/sample-project && node server.js &');
+            }
+
+            function runDataAnalysis() {
+                appendOutput('$ Running data analysis script...');
+                runSpecificCommand('python3 /app/projects/data-analysis-project/analyze_data.py');
             }
 
             function installPackage() {
